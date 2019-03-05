@@ -1,0 +1,64 @@
+{% extends "home_page.html" %}
+
+{% block content %}
+<br />
+<div class="card">
+    <div class="header line">
+        <h1>{{ params['params_x']['name'] }}</h1>
+    </div>
+    <div class="body novel">
+        <div class="novelinfo">
+            <div class="novelinfo-l">
+                <li>作者：<a href="">{{ params['params_x']['author'] }}</a></li>
+                <li>分类：<a href="">{{ params['params_x']['booktype'] }}</a></li>
+                <li>{{ params['params_x']['state'] }}</li>
+                <li class="hulvechandu">简介：<a href="#search">{{ params['params_x']['describe'] }}</a></li>
+            </div>
+            <div class="novelinfo-r">
+                    <a href=""><img src="{{ params['params_x']['tuurl'] }}"></a>
+            </div>
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+</div>
+
+<div id="search" class="card mt20">
+    <div class="header line">
+        <h1>{{ params['params_x']['name'] }}内容简介</h1>
+    </div>
+    {{ params['params_x']['describe'] }}
+</div>
+<!-- -------------------------------------- -->
+<div class="card mt20">
+    <div class="header line">
+        <h2>{{ params['params_x']['name'] }} 章节目录</h2>
+    </div>
+
+    <div class="body ">
+        <ul class="dirlist clearfix">
+            <!-- 循环动态生成 -->
+            {% for day in params['params_zhang'] %}
+                <li>
+                    <a href="/test?tag={{params['params_zhang'][day]}}">{{day}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a id="tiao"></a>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripy %}
+$(function () {
+    $('a[href="#search"]').on('click', function(event) {
+        event.preventDefault();
+        $('#search').addClass('open');
+    });
+    $('#search, #search button.close').on('click keyup', function(event) {
+        if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+            $(this).removeClass('open');
+        }
+    });
+});
+{% endblock %}

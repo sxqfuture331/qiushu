@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form  method="GET" action="/">
+        {% for day in params %}
+            <a href="{{ params[day] }}">{{ day }}</a><br />
+        {% endfor %}
+    </form>
+</body>
+</html>

@@ -1,0 +1,90 @@
+{% extends "home_page.html" %}
+
+{% block content %}
+<nav class="mt20">
+    <ul class="clearfix">
+        <li><a href="https://www.qiushuzw.com/" title="求书网首页"><i class="pticon pticon-home pticon-lg"></i> 求书网首页</a><i class="pticon pticon-angle-right icon"></i></li>
+        <li><a href="http://shenzhiwen.wx.gsw945.com/" title="全部小说">全部小说</a></li>
+    </ul>
+</nav>
+<div class="container clearfix mt20">
+    <div class="w-left">
+        <div class="card">
+            <div class="header line">
+                <h2>全部小说列表</h2>
+            </div>
+
+            <div class="body">
+                <ul class="librarylist">
+                    {% for day in params %}
+                       <li class="line">
+                            <div class="image">
+                                <a href="" ><img src="{{ day['params_x']['tuurl'] }}"></a>
+                            </div>
+                            <div class="content">
+                                <p class="info">
+                                {% for i in day['params_shu'] %}
+                                    <span><a href="/details?tag={{day['params_shu'][i]}}">《{{i}}》</a></span>
+                                {% endfor %}
+                                {{ day['params_x']['author'] }}<br>
+                                </p>
+                                <p class="intro">
+                                    {{ day['params_x']['describe'] }}。。。
+                                </p>
+                                <p class="last">
+                                    更新时间：{{ day['params_x']['state'] }}
+                                </p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                    <div align="center">
+                            {% if params[0]['_data'] !=  params[0]['jj']%}
+                                <a href="?ye_lei={{ params[0]['_data'] }}{{ params[0]['jj'] }}{{ params[0]['y'] }}" >下一页</a>
+                            {% else %}
+                            <a href="?ye={{ params[0]['y'] }}" >下一页</a>
+                                
+                            {% endif %}
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="w-right">
+        <div class="card">
+                <div class="header line">
+                    <h3>小说分类</h3>
+                </div>
+                <div class="body">
+                    <ul class="toplist clearfix">
+                        <li><a href="http://shenzhiwen.wx.gsw945.com/">全部小说</a></li>
+                        <li><a href="?tag=%20%E4%BB%99%E4%BE%A0%E4%BF%AE%E7%9C%9F%20">仙侠修真</a></li>
+                        <li><a href="?tag=%20%E7%A7%91%E5%B9%BB%E6%9C%AA%E6%9D%A5%20">科幻未来</a></li>
+                        <li><a href="?tag=%20%E6%81%90%E6%80%96%E6%83%8A%E6%82%9A%20">恐怖惊悚</a></li>
+                        <li><a href="?tag=%20%E8%A5%BF%E6%96%B9%E5%A5%87%E5%B9%BB%20">西方奇幻</a></li>
+                        <li><a href="?tag=%20%E7%8E%84%E5%B9%BB%E5%BC%82%E7%95%8C%20">玄幻异界</a></li>
+                        <li><a href="?tag=%20%E7%A5%9E%E8%AF%9D%E7%8E%8B%E6%9C%9D%20">神话王朝</a></li>
+                        <li><a href="?tag=%20%E9%AD%94%E6%B3%95%E5%B9%BB%E6%83%85%20">魔法幻情</a></li>
+                        <li><a href="?tag=%20%E4%B8%9C%E6%96%B9%E7%8E%84%E5%B9%BB%20">东方玄幻</a></li>
+                        <li><a href="?tag=%20%E5%8E%86%E5%8F%B2%E4%BC%A0%E5%A5%87%20">历史传奇</a></li>
+                        <li><a href="?tag=%20%E5%9B%BD%E6%9C%AF%E6%AD%A6%E4%BE%A0%20">国术武侠</a></li>
+                        <li><a href="?tag=%20%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%20">网络游戏</a></li>
+                        <li><a href="?tag=%20%E8%B0%8D%E6%88%98%E7%89%B9%E5%B7%A5%20">谍战特工</a></li>
+                        <li><a href="?tag=%20%E5%86%9B%E4%BA%8B%E6%88%98%E4%BA%89%20">军事战争</a></li>
+                        <li><a href="?tag=%20%E4%BD%93%E8%82%B2%E7%AB%9E%E6%8A%80%20">体育竞技</a></li>
+                        <li><a href="?tag=%20%E5%AE%98%E5%9C%BA%E8%81%8C%E5%9C%BA%20">官场职场</a></li>
+                        <li><a href="?tag=%20%E6%B5%AA%E6%BC%AB%E8%A8%80%E6%83%85%20">浪漫言情</a></li>
+                        <li><a href="?tag=%20%E9%9D%92%E6%98%A5%E6%A0%A1%E5%9B%AD%20">青春校园</a></li>
+                        <li><a href="?tag=%20%E5%AE%AB%E5%BB%B7%E8%B4%B5%E6%97%8F%20">宫廷贵族</a></li>
+                        <li><a href="?tag=%20%E8%80%BD%E7%BE%8E%E8%A8%80%E6%83%85%20">耽美言情</a></li>
+                        <li><a href="?tag=%20%E9%83%BD%E5%B8%82%E7%94%9F%E6%B4%BB%20">都市生活</a></li>
+                        <li><a href="?tag=%20%E7%A9%BF%E8%B6%8A%E9%87%8D%E7%94%9F%20">穿越重生</a></li>
+                        <li><a href="?tag=%20%E9%A3%8E%E9%9B%A8%E5%90%8C%E4%BA%BA%20">风雨同人</a></li>
+                        <li><a href="?tag=%20%E7%9F%AD%E7%AF%87%E7%BB%BC%E5%90%88%20">短篇综合</a></li>
+                    </ul>
+                </div>
+            </div>
+    </div>
+</div>
+{% endblock %}
