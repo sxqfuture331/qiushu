@@ -1,6 +1,5 @@
 ```
-scrapy startproject qiushu
-cd qiushu
-scrapy genspider QiushuSpider www.qiushu.cc
-scrapy crawl QiushuSpider
+运行爬虫，获取数据
+scrapy crawl QiushuSpider（必须启动MongoDB服务）
+然后运行python run.py
 ```

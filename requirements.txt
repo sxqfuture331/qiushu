@@ -1,0 +1,7 @@
+pymongo
+requests
+lxml
+bs4
+scrapy
+datetime
+flask
